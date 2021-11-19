@@ -53,7 +53,7 @@ func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 }
 
 ///  *** PRODUCTS ****
-//Create
+//Create Product
 func CreateProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var prd Product
@@ -62,7 +62,7 @@ func CreateProducts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(prd)
 }
 
-// create GetEmployees handler
+// Get All Products
 func GetProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var products []Product
@@ -70,7 +70,7 @@ func GetProducts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(products)
 }
 
-//GET products
+//GET Single Product
 func GetProductsID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var products Product
@@ -78,7 +78,7 @@ func GetProductsID(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(products)
 }
 
-//update
+//Update Product
 func UpdateProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var products Product
@@ -89,7 +89,7 @@ func UpdateProducts(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// delete
+// Delete Product
 func DeleteProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var prd Product
