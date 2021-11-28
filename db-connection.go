@@ -22,9 +22,7 @@ func DataMigration() {
 	Database, err = gorm.Open(mysql.Open(urlDSN), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err.Error())
-		panic("connection failed :(")
+		panic("Connection failed")
 	}
-	//Tables
-	Database.AutoMigrate(&Employee{})
-	Database.AutoMigrate(&Product{})
+
 }

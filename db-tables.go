@@ -17,3 +17,11 @@ type Product struct {
 	Unite       string  `json:"unite"`
 	CostPrice   float64 `json:"costprice"`
 }
+
+type Users struct {
+	gorm.Model
+	Name     string `json:"usr_name"`
+	LastName string `json:"usr_lastname"`
+	Password string `json:"usr_password"`
+	Email    string `json:"usr_email"`
+}
