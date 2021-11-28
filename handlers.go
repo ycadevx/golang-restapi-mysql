@@ -146,12 +146,3 @@ func DeleteUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 //***********************************************************//
-// GetAuthorization
-func GetAuthorization(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var autho []Authorization
-	Database.Find(&autho)
-	json.NewEncoder(w).Encode(autho)
-}
-
-//***********************************************************//
