@@ -7,6 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//***********************************************************//
 ///  *** EMPLOYEE ****
 // create employee handler
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
@@ -52,6 +53,7 @@ func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Employee is deleted ||")
 }
 
+//***********************************************************//
 ///  *** PRODUCTS ****
 //Create Product
 func CreateProducts(w http.ResponseWriter, r *http.Request) {
@@ -96,3 +98,60 @@ func DeleteProducts(w http.ResponseWriter, r *http.Request) {
 	Database.Delete(&prd, mux.Vars(r)["id"])
 	json.NewEncoder(w).Encode("Product is deleted")
 }
+
+//***********************************************************//
+// Get All Users
+func GetUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var users []Users
+	Database.Find(&users)
+	json.NewEncoder(w).Encode(users)
+
+}
+
+//Create Users
+func CreateUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var user Users
+	json.NewDecoder(r.Body).Decode(&user)
+	Database.Create(&user)
+	json.NewEncoder(w).Encode(user)
+}
+
+//Update Users
+func UpdateUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var user Users
+	Database.First(&user, mux.Vars(r)["id"])
+	json.NewDecoder(r.Body).Decode(&user)
+	Database.Save(&user)
+	json.NewEncoder(w).Encode(user)
+
+}
+
+//GET Single Users
+func GetUsersID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var usr Users
+	Database.First(&usr, mux.Vars(r)["id"])
+	json.NewEncoder(w).Encode(usr)
+}
+
+// Delete User
+func DeleteUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var usr Users
+	Database.Delete(&usr, mux.Vars(r)["id"])
+	json.NewEncoder(w).Encode("User is deleted")
+}
+
+//***********************************************************//
+// GetAuthorization
+func GetAuthorization(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var autho []Authorization
+	Database.Find(&autho)
+	json.NewEncoder(w).Encode(autho)
+}
+
+//***********************************************************//
